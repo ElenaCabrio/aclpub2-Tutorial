@@ -44,10 +44,13 @@ We strongly suggest taking a look at this [link](https://github.com/rycolab/aclp
 In addition, for the handbook, a file `program.yml` should be created [Jump to Handbook generation instructions](#Handbook-generation-instructions). 
 
 ## Expected output
-The generated proceedings should be sent to the ACL Anthology [(instructions)](https://aclanthology.org/info/contrib/) as a `.zip` file containing a repository named with the conference/workshop acronym. Such repository should contain:
+The generated proceedings should be sent to the ACL Anthology [(instructions)](https://aclanthology.org/info/contrib/) as a `.zip` or `.tgz` file containing a repository named with the conference/workshop acronym. Such repository should contain:
 1. A folder named `input` containing all the input files (i.e., the `*.yml` and `*.tex` files used to generate the proceedings)
-2. A folder named `watermarked_pdf` containing all the pdfs of the watermarked camera ready papers 
-3. A PDF file named `proceedings.pdf` containing the whole conference/workshop proceedings (i.e., the introduction and all the watermarked PDFs of the camera ready papers).
+2. A folder named `watermarked_pdf` containing all the pdfs of the watermarked camera ready papers AND the attacments 
+3. A folder name `attachments` containinng all files associated with the paper. Notice that these file must be correctly referred in the `papers.yml` file.
+4. A PDF file named `proceedings.pdf` containing the whole conference/workshop proceedings (i.e., the introduction and all the watermarked PDFs of the camera ready papers).
+
+Upload the resulting file (<conference>_data.tgz) to a file server or cloud storage (e.g. Google Drive) and email the link to it to the Anthology Director. Please do not send the file as an email attachment.
 
 **Important:** Before generating the final proceedings, please carefully check the input pdfs of the camera ready papers with the ACLPUBCHECK tool, a Python tool that automatically detects author formatting errors, margin violations as well as many other common formatting errors in papers that are using the LaTeX sty file associated with ACL venues. The tool and instructions to use it can be found [here](https://github.com/acl-org/aclpubcheck). We *strongly suggest* to share with the authors this tool before the sumbission of their final camera ready, in order to reduce the effort of controlling possibly hundreds of papers. 
 
@@ -60,13 +63,65 @@ This file should contain the key information about the conference, as its name, 
 Note that the ISBN of your conference/workshop will be provided by ACL.
 
 ```yaml
-name: Name of the Conference
-abbreviation: Conference abbreviation or acronym, e.g. EMNLP
-volume: Volume name, e.g. "Proceedings of the Conference, Vol. 1  (Long Papers)"
+book_title: name of the book; it should be in the form "Proceedings of ..." and it will be used in the bib file to name the event
+event_name: name of the Conference or Workshop and it will be used in the frontmatter of the proceedeings and in the watermark over the single papers
+cover_subtitle: the subtitle used in the cover of the proceedings, it can be in the form "Proceedings of the Conference, Vol. 1  (Long Papers)" or "Proceedings of the Workshop"
+anthology_venue_id: conference/workshop abbreviation or acronym, e.g. EMNLP
 start_date: Conference start date YYYY-MM-dd
 end_date: Conference end date YYYY-MM-dd
-isbn: ISBN number of the proceeding.
+isbn: ISBN number of the proceeding (assigned by the ACL)
+location: location of the conference
+editors: list of the editors of the volume, in the form 
+  - first_name: name of the editor (e.g., John)
+    middle_name: middle nanme of the editor (e.g., D.)
+    last_name: surname of the editor (e.g., Walker)
+publisher: published of the conference, generally "Association for Computational Linguistics"
 ```
+
+Here some example, first for a conference:
+
+```yaml
+book_title: Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)
+event_name: The 60th Annual Meeting of the Association for Computational Linguistics
+cover_subtitle: Proceedings of the Conference (Volume 1: Long Papers)
+anthology_venue_id: ACL
+start_date: 2022-05-22
+end_date: 2022-05-27
+isbn: XXX-X-XXXXXX-XX-X (you should replace this with the real ISBN)
+location: Dublin, Ireland
+editors:
+  - first_name: Smaranda
+    last_name: Muresan
+  - first_name: Preslav
+    last_name: Nakov
+  - first_name: Aline
+    last_name: Villavicencio
+publisher: Association for Computational Linguistics
+```
+
+and for a workshop
+
+```yaml
+book_title: Proceedings of the 2nd Workshop on Human Evaluation of NLP Systems (HumEval 2021)
+event_name: The 2nd Workshop on Human Evaluation of NLP Systems
+cover_subtitle: Proceedings of the Workshop
+anthology_venue_id: HumEval
+start_date: 2022-05-27
+end_date: 2022-05-27
+isbn: XXX-X-XXXXXX-XX-X (you should replace this with the real ISBN)
+location: Dublin, Ireland
+editors:
+  - first_name: Belz
+    last_name: Anya
+  - first_name: Popović
+    last_name: Maja
+  - first_name: Reiter
+    last_name: Ehud
+  - first_name: Shimorina
+    last_name: Anastasia
+publisher: Association for Computational Linguistics
+```
+
 
 #### sponsors.yml
 This file should list the sponsors (if any). A directory containing the related logos should be created in the same directory of the `.yml` files (named sponsor_logos/).
@@ -260,7 +315,8 @@ The purpose of this file are to set up the Jinja environment with LaTeX-like blo
 In addition, it is also responsible for configuring some convenience functions that allow us to create some LaTeX structures in the final output `.tex` file that are easier to write in native Python than either the Jinja base syntax, or LaTeX alone.
 
 ## Handbook generation instructions
-TBC (Marco)
+
+** Work in progress **
 
 #### program.yml
 
