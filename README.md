@@ -256,7 +256,7 @@ python or2papers.py myuser@acl.com 123456 aclweb.org/ACL/2022/Conference
 ### or2program_committee.py
 This script searches all Senior_Area_Chairs and Program_Chairs under your conference and saves their information in the `program_committee.yml` file.
 
-For running or2papers.py type:
+For running `or2papers.py` type:
   
 ```
 python or2program_committee.py USER PASSWORD WORKSHOP_ID
@@ -265,7 +265,7 @@ For example:
 ```
 python or2program_committee.py myuser@acl.com 123456 aclweb.org/ACL/2022/Conference
 ```
-### Warnings
+### :warning: Warnings
 1. The workshops that accepts the ARR commitment should be aware that the `or2program_committee.py` script only extracts data of submitted/committed papers.
 
 2. During the script execution, you may see a message such as "ERROR: or_id not found". It means that the script could not retrieve the profile's information from OpenReview. Therefore, you must insert manually the data in the `paper.yml` or `program_committee.yml`. You can identify the problematic OpenReview ID and their papers in `paper.log` and `program_committee.log`
