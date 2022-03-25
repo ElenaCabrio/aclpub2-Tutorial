@@ -227,17 +227,17 @@ When running your workshop on OpenReview, it is possible to use their API for au
   
 Those scripts are designed to be used by the workshop's Program Chairs due to access permission required during the queries to OpenReview. To use these scripts, you will need **username** (the e-mails used for login onto OpenReview), **password** (the password associated with the user's account), and the **workshop_ID** (the OpenReview identifier linked to the workshop).
 
-**Workshop ID**: you can find out the workshop's identifier by following 1 of the two approaches below:
+**Workshop ID**: you can find out the workshop's identifier by following one of the two approaches below:
 1. Workshop ID is identified as "venue ID" on the setup website.
 
 2. Workshop ID is present at the workshop's URL. It is the ID field. For example, the ID of the ACL conference (https://openreview.net/group?id=aclweb.org/ACL/2022/Conference) is "aclweb.org/ACL/2022/Conference". Note that & is a separator in the URL. Therefore anything after it is not part of the workshop ID.
 
 ### Before running the scripts
 
-####Requirements
+#### Requirements
 Those scripts require Python3 and OpenReview API installed on your machine. For installing OpenReview API, please go to https://openreview-py.readthedocs.io/en/latest/how_to_setup.html
 
-####Updated data
+#### Updated data
 The scripts based on OpenReview API retrieve all information directly from OpenReview. In other words, all SACs, reviewers and authors must have their OpenReview profiles updated (mainly name and affiliation).
   
 ### or2papers.py
