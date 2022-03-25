@@ -219,7 +219,19 @@ Each of the listed papers must have a unique ID so that they may be referred to 
 ```
 
 ## How to export yml files from OpenReview
-TBC (Rodrigo)
+When running your workshop on OpenReview, it is possible to use their API for automatically extracting the `papers.yml` and `program_committee.yml` files. For this purpose, we provide two Python3 scripts for facilitating your work.
+  
+1. `or2papers.py': it creates the `papers.yml` file by extracting the papers marked as "accepted" as "Decision"; 
+
+2. `or2program_committee.py`: it creates the `program_committee.yml` file by retrieving the *Senior Area Chairs* list registered at workshop spate on OpenReview and the list of reviewers;
+  
+Those scripts are designed to be used by the workshop's Program Chairs due to access permission required during the queries to OpenReview. To use these scripts, you will need **username** (the e-mails used for login onto OpenReview), **password** (the password associated with the user's account), and the **workshop_ID** (the OpenReview identifier linked to the workshop).
+
+  
+  
+  
+  
+  
 
 ## Testing the tool to generate your proceedings
 Now that you know the expected structure of the proceedings and you know how to edit/export the required `.yml` input files, you are ready to test the tool to automatically generate the proceedings. First of all, follow the Setup procedures. 
